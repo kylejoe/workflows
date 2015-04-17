@@ -27,7 +27,7 @@ gulp.task('coffee', function() {
 	//move processed file to scripts folder
 	.pipe(gulp.dest('components/scripts'))
 });
-
+				//this coffee array will run before js
 gulp.task('js', function() {
 	gulp.src(jsSources)
 		.pipe(concat('script.js'))
@@ -46,3 +46,7 @@ gulp.task('compass', function() {
 		.on('error', gutil.log))
 		.pipe(gulp.dest('builds/development/css'))
 });
+
+			//when default is run it will run all these tasks
+			// when just gulp is called
+gulp.task('default', ['coffee', 'js', 'compass']);
